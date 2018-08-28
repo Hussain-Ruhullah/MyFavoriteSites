@@ -2,7 +2,12 @@ import htmlToELement from 'html-to-element';
 import './form.scss';
 
 export default class Form{
-        constructor(){
+        constructor(elementName){
+
+            this.formContainer = document.querySelector(elementName);
+            const formElement = this.createFormHtml();
+            this.formContainer.appendChild(formElement);
+
             this.$name;
             this.$postAdresse;
             this.$eMailAdresse;
@@ -21,9 +26,7 @@ export default class Form{
                             <i class="fa fa-plus" aria-hidden="true"></i>
                         </div>
                     </div>
-
                     <div class="accordion--trigger accordion__head--search--wrapper">
-
                     </div>
                 </div>
                 
@@ -65,7 +68,6 @@ export default class Form{
             registerElement.querySelector("#sendButton").addEventListener("click", ()=>{
 
                 if(this.verifier(registerElement)){
-
                     this.sendToPage();
                 }
                 
@@ -80,7 +82,7 @@ export default class Form{
             this.$msg = element.querySelector( "#msg" ).value;
             this.$status=element.querySelector('#status');
             const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-            if (this.$name==""||this.$postAdresse==""||this.$eMailAdresse==""||re.test(this.$eMailAdresse.toLowerCase())||this.$msg=="") {
+            if (this.$name==""||this.$postAdresse==""||this.$eMailAdresse==""||!re.test(this.$eMailAdresse.toLowerCase())||this.$msg=="") {
                 chayns.dialog.alert("please complete the registration form")
                     .then(function (data) { 
                         console.log(data) 

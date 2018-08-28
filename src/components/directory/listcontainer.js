@@ -5,13 +5,31 @@ import listItem from './listItem/listItem';
 import loadMoreButton from './showMore/showMore';
 
 export default class SiteList{
-    constructor(){
-        this.$searchBox=new SearchBox();
+    constructor(element){
+        
+        // const listElement = myList.createListHtml();
+        // element.appendChild(listElement);
         this.itemClass=new listItem();
         this.$showMoreButton=new loadMoreButton();
+
+        this.listContainer= document.querySelector(element);
+        const listElement = this.createListHtml();
+        this.listContainer.appendChild(listElement);
+
+        let $searchBar = this.listContainer.querySelector('.accordion__head');
+        this.$baseElement = element;
+        this.$searchBox=new SearchBox($searchBar);
+
+        this.$searchBox.onChange = (keyWord) => {
+            // Called every time a new word is searched
+            this.keyWord=keyWord;
+            this.amount=0;
+            this.loadSites();
+        };
+
+        
         this.keyWord="pizza";
         this.amount=0;
-
         this.loadSites();
     }
     
@@ -28,18 +46,17 @@ export default class SiteList{
             </div>
         </div>
         `);
-        //t
-        listElement.querySelector('.accordion__head').appendChild(this.$searchBox.createSearchHtml((keyWord)=>{
-            this.keyWord=keyWord;
-            this.amount=0;
-            this.loadSites();
-        }));
+        //t 
+    
 
-        listElement.querySelector('.accordion__content').appendChild(this.$showMoreButton.loadMoreHtml(()=>{ //t
-            this.amount+=8;
-            //t to if this.amount=== in loadsites
-            this.loadSites();
-        }))
+        listElement.querySelector('.accordion__content').appendChild(
+            this.$showMoreButton.loadMoreHtml(()=>{ //t
+                // only increases the number of skipped results
+                this.amount+=8;
+                //t to if this.amount=== in loadsites
+                this.loadSites();
+            })
+        );
         console.log("listitem", listElement);
         return listElement;
     }
@@ -47,9 +64,10 @@ export default class SiteList{
     async loadSites(){
         chayns.hideWaitCursor();
         let result=  await fetchData(this.keyWord, this.amount);
-       if(this.amount===0){//
-        document.querySelector("#accordionBody").innerHTML="";//
-       }
+        if(this.amount===0){// amount is only 0 if a new word is searched 
+            document.querySelector("#accordionBody").innerHTML='';// clear accordion__body
+            // create a notfound response using .len func
+        }
         this.displayResult(result);
     }
 
@@ -57,7 +75,9 @@ export default class SiteList{
         const $resultBody = document.querySelector("#accordionBody");
         
 		for (let i = 0; i < result.length; i++) {
-            $resultBody.appendChild(this.itemClass.createItemHtml(result[i].siteId,result[i].appstoreName))
+            $resultBody.appendChild(
+                this.itemClass.createItemHtml(result[i].siteId,result[i].appstoreName)
+            )
 		}
     }
 }

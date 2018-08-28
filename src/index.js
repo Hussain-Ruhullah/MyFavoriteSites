@@ -11,17 +11,13 @@ const init = async () => {
 
     // get formcontainer from index-html
 
-    const myForm = new Form();
-    const formContainer = document.querySelector('.tapp__content');
-    const formElement = myForm.createFormHtml();
-    formContainer.appendChild(formElement);
-
+    const myForm = new Form('.formContainer');
+    
     // Form
 
-    const listContainer = document.querySelector('.listDirectory');
-    const myList = new SiteList();
-    const listElement = myList.createListHtml();
-    listContainer.appendChild(listElement);
+    // const listContainer = document.querySelector('.listDirectory');
+    // const myList = new SiteList(listContainer);
+    const myList = new SiteList('.listDirectory');
 
 };
 
