@@ -1,9 +1,7 @@
 import htmlToElement from 'html-to-element'
 
  export default class listItem{
-     constructor(){
 
-     }
      createItemHtml(siteId,siteName){
          const itemHtml=htmlToElement(`
          <div class="listItems">
@@ -21,7 +19,6 @@ import htmlToElement from 'html-to-element'
          `)
 
         itemHtml.querySelector('.ListItem--clickable').addEventListener('click', ()=>{
-            console.log(siteId)
             chayns.openUrl({
                 url: `https://chayns.net/${siteId}?tappId=1`
               });

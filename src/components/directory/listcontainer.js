@@ -1,7 +1,7 @@
 import htmlToELement from 'html-to-element';
 import SearchBox from './search';
 import fetchData from '../../utils/fetchData';
-import listItem from './listtem/listItem';
+import listItem from './listItem/listItem';
 import loadMoreButton from './showMore/showMore';
 
 export default class SiteList{
@@ -17,7 +17,7 @@ export default class SiteList{
     
     createListHtml() {
         const listElement = htmlToELement(`
-        <div class="accordion accordion--open">
+        <div class="accordion  accordion--open">
             <div class=" accordion__head ">gesuchte Webseiten
             </div>
             <div  class="accordion__body">
@@ -28,16 +28,16 @@ export default class SiteList{
             </div>
         </div>
         `);
-
-        console.log("CreateSearchHtml check", this.$searchBox.createSearchHtml());
+        //t
         listElement.querySelector('.accordion__head').appendChild(this.$searchBox.createSearchHtml((keyWord)=>{
             this.keyWord=keyWord;
             this.amount=0;
             this.loadSites();
         }));
 
-        listElement.querySelector('.accordion__content').appendChild(this.$showMoreButton.loadMoreHtml(()=>{
+        listElement.querySelector('.accordion__content').appendChild(this.$showMoreButton.loadMoreHtml(()=>{ //t
             this.amount+=8;
+            //t to if this.amount=== in loadsites
             this.loadSites();
         }))
         console.log("listitem", listElement);
@@ -46,11 +46,9 @@ export default class SiteList{
 
     async loadSites(){
         chayns.hideWaitCursor();
-        console.log("hello hussain", this.keyWord);
         let result=  await fetchData(this.keyWord, this.amount);
-        console.log("keyWord", result);
-       if(this.amount===0){
-        document.querySelector("#accordionBody").innerHTML="";
+       if(this.amount===0){//
+        document.querySelector("#accordionBody").innerHTML="";//
        }
         this.displayResult(result);
     }

@@ -12,40 +12,65 @@ export default class Form{
 
         //Methods
         createFormHtml() {
-            const element = htmlToELement(`
+            const registerElement = htmlToELement(`
             <div>
-                <div>
-                    <input id="name" class="input form" type="text" placeholder="Name" style="width:100%" required>
-                </div>
-                <div>
-                    <input id="postAdresse" class="input form" type="text" placeholder="postAdresse" style="width:100%" required>
-                </div>
-                <div>
-                    <input id="eMailAdresse" class="input form" type="text" placeholder="eMailAdresse" style="width:100%"
-                        required>
-                </div>
-                <div>
-                        <textarea class="input form" style="width:100%"  id="msg" autogrow placeholder="text"></textarea>
-                </div>
+            <div class="accordion ">
+                <div class="accordion__head">Melde deine Website
+                    <div class="right" style="padding-left:13px; display: flex; flex-direction: row;">
+                        <div class="badge accordion--trigger">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </div>
+                    </div>
 
-                <div style="text-align: center">
-                    <p id="status"></p>
-                    <button id="sendButton" class="button sButton ">
-                        Senden
-                    </button>
+                    <div class="accordion--trigger accordion__head--search--wrapper">
+
+                    </div>
                 </div>
+                
+                <div class="accordion__body">
+                    <div id="container" class="accordion__content" >
+                        <!-- Form start -->
+                        <div class="formContainer">
+
+                                <div>
+                                        <input id="name" class="input form" type="text" placeholder="Name" style="width:100%" required>
+                                    </div>
+                                    <div>
+                                        <input id="postAdresse" class="input form" type="text" placeholder="postAdresse" style="width:100%" required>
+                                    </div>
+                                    <div>
+                                        <input id="eMailAdresse" class="input form" type="text" placeholder="eMailAdresse" style="width:100%"
+                                            required>
+                                    </div>
+                                    <div>
+                                            <textarea class="input form" style="width:100%"  id="msg" autogrow placeholder="text"></textarea>
+                                    </div>
+                    
+                                    <div style="text-align: center">
+                                        <p id="status"></p>
+                                        <button id="sendButton" class="button sButton ">
+                                            Senden
+                                        </button>
+                                    </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
             </div>
             `);
 
-            element.querySelector("#sendButton").addEventListener("click", ()=>{
+            registerElement.querySelector("#sendButton").addEventListener("click", ()=>{
 
-                if(this.verifier(element)){
+                if(this.verifier(registerElement)){
 
                     this.sendToPage();
                 }
                 
             })
-            return element;
+            return registerElement;
         }
 
         verifier(element){

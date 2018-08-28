@@ -23,9 +23,9 @@ export default class SearchBox{
         searchElement.querySelector('#getText').addEventListener('keypress',()=>{
             chayns.showWaitCursor();
             clearTimeout(this.$timeout);
-            console.log("keypress check")			
+            // keypressed			
 			this.$timeout = setTimeout(()=>{
-                console.log("timeoutcall")
+                // timeoutcall
 				const $text= searchElement.querySelector(".search").value;
 				callback($text);
 			},500);
