@@ -12,7 +12,7 @@
 
     <!--Load the chayns styles-->
     <link rel="stylesheet" href="https://chayns-res.tobit.com/API/V3.1/css/chayns.min.css">
-    <link rel="stylesheet" href="styles/style.css">
+    <!-- <link rel="stylesheet" href="styles/style.css"> -->
 </head>
 
 <body>
@@ -49,30 +49,7 @@
                 <div class="accordion__body">
                     <div id="container" class="accordion__content" >
                         <!-- Form start -->
-
-                        <div>
-                            <input id="name" class="input form" type="text" placeholder="Name" style="width:100%" required>
-                        </div>
-                        <div>
-                            <input id="postAdresse" class="input form" type="text" placeholder="postAdresse" style="width:100%" required>
-                        </div>
-                        <div>
-                            <input id="eMailAdresse" class="input form" type="text" placeholder="eMailAdresse" style="width:100%"
-                                required>
-                        </div>
-                        <div>
-                                <textarea class="input form" style="width:100%"  id="msg" autogrow placeholder="text"></textarea>
-                        </div>
-
-                        <div style="text-align: center">
-                                <br>
-                                <p id="status"></p>
-                            <br>
-                            <button id="sendButton" class="button sButton ">Senden</button>
-                            <br>
-                            
-                        </div>
-                        <!-- </div> end of Form -->
+                        <div class="formContainer"></div>
 
                     </div>
 
@@ -81,100 +58,14 @@
 
         </div>
         <!-- End of New accordion -->
+        <div class="listDirectory">
 
-        <!-- start list -->
-        <div class="accordion accordion--open">
-            <div class=" accordion__head ">gesuchte Webseiten
-                <!-- plus -->
-                <div class="right" style="padding-left:13px; display: flex; flex-direction: row;">
-                  
-                </div>
-
-
-                <div class="Suche Suche--accordion ">
-                    <input class="input search scriptBox" id="getText" type="text" placeholder="Suche"/>
-                    <label for="">
-                        <i class="fa fa-search"></i>
-                    </label>
-                </div>
-            </div>
-            <div  class="accordion__body">
-                <div id="accordionBody" >
-                    
-
-                      
-                        <div class="ListItem ListItem--clickable">
-                                <div class="ListItem__head">
-                                    <div class="ListItem__Image">
-                                        <img style="width:40px;" display="inline" src="https://chayns.tobit.com/storage/67756-13846/Images/icon-57.png">
-                                    </div>
-                                    <div class="ListItem__Title">
-                                        <p class="ListItem__Title--headline" display="inline">AK1-Tobit Software Authorized</p>
-                                        <p class="ListItem__Title--description" display="inline">Tobit Software Authorized </p>
-                                    </div>
-                                </div>
-                            </div>
-                                                                     
-                                    <div class="ListItem ListItem--clickable">
-                                            <div class="ListItem__head">
-                                                <div class="ListItem__Image">
-                                                    <img style="width:40px;" display="inline" src="https://chayns.tobit.com/storage/67756-13846/Images/icon-57.png">
-                                                </div>
-                                                <div class="ListItem__Title">
-                                                    <p class="ListItem__Title--headline" display="inline">AK1-Tobit Software Authorized</p>
-                                                    <p class="ListItem__Title--description" display="inline">Tobit Software Authorized </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                                                
-                                    <div class="ListItem ListItem--clickable">
-                                            <div class="ListItem__head">
-                                                <div class="ListItem__Image">
-                                                    <img style="width:40px;" display="inline" src="https://chayns.tobit.com/storage/75509-17036/Images/icon-57.png">
-                                                </div>
-                                                <div class="ListItem__Title">
-                                                    <p class="ListItem__Title--headline" display="inline">cdo-tobitsof</p>
-                                                    <p class="ListItem__Title--description" display="inline">Tobit Software </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                                                    
-                                    <div class="ListItem ListItem--clickable">
-                                            <div class="ListItem__head">
-                                                <div class="ListItem__Image">
-                                                    <img style="width:40px;" display="inline" src="https://chayns.tobit.com/storage/72977-07525/Images/icon-57.png">
-                                                </div>
-                                                <div class="ListItem__Title">
-                                                    <p class="ListItem__Title--headline" display="inline">Central Organization </p>
-                                                    <p class="ListItem__Title--description" display="inline">Tobit Software</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                              
-                                        
-                    
-               </div>
-                <div class="accordion__content">
-
-
-                    <!-- Mehr anzeigen -->
-                    <div class="grid__item col-1-1-desktop col-1-1-mobile">
-                        <div class="mehr">
-                            <a href="#" class="right" id="load">
-                                <br>Mehr anzeigen</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
         </div>
-
-
     </div>
     </div>
     <!--Load the js chayns API-->
     <script src="https://chayns-res.tobit.com/API/V3.1/js/chayns.min.js"></script>
-    <script src="main.js"></script>
+    <!-- <script src="main.js"></script> -->
 
 </body>
 
