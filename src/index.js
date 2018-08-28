@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import SiteList from './components/directory/listcontainer';
+import SiteList from './components/directory/';
 import Form from './components/register/form.js';
 import SERVER_URL from './constants/server-url';
 import './webstyles.scss'
